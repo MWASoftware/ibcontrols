@@ -22,6 +22,9 @@ The Dynamic Database Controls are:
     • TIBArrayGrid             (Requires IBX or IBDynamicInterfaces support 
                                 and specific to Firebird arrays)
 
+To install: download the package and open the ibcontrols.lpk in the Lazarus package editor.
+Click on the "Use" button in the package editor and select "Install".
+
 For full information on the dynamic database controls and IBDynamicData interface see
 the user guide in the doc directory.
 
