@@ -1,9 +1,11 @@
-IBCONTROLS Change Log  version          (1.0.0 Build 0008) Tue, 31 Dec 2024 16:37:03 +0000
-
-1. First release as a separate package from IBX
-
-IBCONTROLS Change Log  version          (1.0.1 Build 0008) Tue, 31 Dec 2024 16:37:03 +0000
+IBCONTROLS Change Log  version          (1.0-1 Build 9) Sun, 2 Feb 2025 13:45:31 +0000
 
 1. Value  tvsUpdating was removed from TTreeViewState enumeration (unit ComCtrls), Lazarus 
    rev. 64855 (2021-03-22 by wp) in Lazarus/main. ibcontrols is now compatible with Lazarus/main
    and earlier versions. Use of tvsUpdating is now conditional of it being declared in ComCtrls. 
+
+IBCONTROLS Change Log  version          (1.0-0 Build 0008) Tue, 31 Dec 2024 16:37:03 +0000
+
+1. First release as a separate package from IBX
+
+
