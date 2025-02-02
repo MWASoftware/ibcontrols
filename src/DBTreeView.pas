@@ -568,8 +568,11 @@ end;
 
 procedure TDBTreeView.Delete(Node: TTreeNode);
 begin
-  if not (tvsUpdating in States) {TreeNodes being cleared}
-     and not (tvsManualNotify in States) {Tree Collapse with node delete}
+  if
+  {$if declared(tvsUpdating)}
+     not (tvsUpdating in States) and {TreeNodes being cleared}
+  {$ifend}
+     not (tvsManualNotify in States) {Tree Collapse with node delete}
      and ScrollToNode(TDBTreeNode(Node)) then
      DataSet.Delete;
   inherited Delete(Node);
