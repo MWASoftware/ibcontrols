@@ -1,3 +1,13 @@
+IBCONTROLS Change Log  version          (1.0-2 Build 9) Sun, 2 Feb 2025 13:45:31 +0000
+
+1. Ensure that cache bitmap is always nil after free (obscure protection fault with alt colours).
+
+2. Resize refresh strategy after insert to avoid issues with TDataset.Modified. With IBX
+   Modified is always true after insert and with old strategy inserted record was posted
+   immediately. Other database drivers may not set Modified flag until other changes are
+   made and this resulted in insert being cancelled immediately. Revised strategy
+   leaves dataset in insert mode after refresh.
+
 IBCONTROLS Change Log  version          (1.0-1 Build 9) Sun, 2 Feb 2025 13:45:31 +0000
 
 1. Value  tvsUpdating was removed from TTreeViewState enumeration (unit ComCtrls), Lazarus 

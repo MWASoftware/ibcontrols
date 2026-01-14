@@ -163,7 +163,7 @@ type
     function  GridCanModify: boolean;
     procedure DoDrawRow(aRow: integer; aRect: TRect; aState: TGridDrawState);
     procedure DoMoveRecord(Data: PtrInt);
-    procedure DoSelectNext(Data: PtrInt);
+    procedure DoUpdateActive(Data: PtrInt);
     procedure DoScrollDataSet(Data: PtrInt);
     procedure DoSetupDrawPanel(Data: PtrInt);
     procedure DoSendMouseClicks(Data: PtrInt);
@@ -523,6 +523,7 @@ begin
       if FList[i].FState = rcPresent then
       begin
         FList[i].FBitmap.Free;
+        FList[i].FBitmap := nil;
         FList[i].FState := rcEmpty;
       end;
     end;
@@ -736,9 +737,8 @@ begin
   if aDataSet.State = dsInsert then
   begin
     FRequiredRecNo := aDataSet.RecNo + 1;
-    Application.QueueAsyncCall(@DoSelectNext,0);
   end;
-  UpdateActive
+  Application.QueueAsyncCall(@DoUpdateActive,0);
 end;
 
 procedure TDBControlGrid.OnDataSetOpen(aDataSet: TDataSet);
@@ -1133,9 +1133,9 @@ begin
   FDataLink.DataSet.MoveBy(integer(Data) - FDataLink.DataSet.RecNo);
 end;
 
-procedure TDBControlGrid.DoSelectNext(Data: PtrInt);
+procedure TDBControlGrid.DoUpdateActive(Data: PtrInt);
 begin
-  FDataLink.DataSet.MoveBy(1);
+  UpdateActive;
 end;
 
 procedure TDBControlGrid.DrawAllRows;
