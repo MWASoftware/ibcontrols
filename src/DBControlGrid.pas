@@ -740,6 +740,7 @@ begin
   end;
   Application.QueueAsyncCall(@DoUpdateActive,0);
   {$IFDEF WINDOWS}
+  {Needed to ensure inserted row displayed correctly}
   Application.ProcessMessages;
   Application.QueueAsyncCall(@DoUpdateActive,0);
   {$ENDIF}
