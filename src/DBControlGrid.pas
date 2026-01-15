@@ -739,6 +739,10 @@ begin
     FRequiredRecNo := aDataSet.RecNo + 1;
   end;
   Application.QueueAsyncCall(@DoUpdateActive,0);
+  {$IFDEF WINDOWS}
+  Application.ProcessMessages;
+  Application.QueueAsyncCall(@DoUpdateActive,0);
+  {$ENDIF}
 end;
 
 procedure TDBControlGrid.OnDataSetOpen(aDataSet: TDataSet);
